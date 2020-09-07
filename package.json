@@ -1,0 +1,60 @@
+{
+  "name": "@jagretz/cabin-management",
+  "description": "Manage dates, times, people and \"how to\" guides for managing one or more cabins",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test --watch",
+    "test:coverage": "react-scripts test --coverage=true --watchAll=false",
+    "eslint": "eslint ./ --fix --cache",
+    "prettier": "prettier --write \"./**/*.{js,jsx,css,scss,html,json,md,mdx}\" --no-config",
+    "stylelint": "stylelint \"./**/*.{css,scss}\" --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{css,scss}": "stylelint --fix",
+    "*.{js,jsx,css,scss,html,json,md,mdx}": "prettier --write"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "private": true,
+  "license": "MIT",
+  "repository": "https://github.com/jagretz/cabin-management",
+  "bugs": "https://github.com/jagretz/cabin-management/issues",
+  "author": "Jason Gretz (https://github.com/jagretz)",
+  "contributors": [
+    "Jason Gretz (https://github.com/jagretz)",
+    "Charles Cook (https://github.com/squireChuck)"
+  ],
+  "keywords": [
+    "react"
+  ],
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
+  },
+  "devDependencies": {
+    "@jagretz/eslint-config-base": "^0.2.0-snapshot.0",
+    "@jagretz/eslint-config-react": "^0.2.0-snapshot.0",
+    "@jagretz/stylelint-config-base": "^0.2.0-snapshot.0",
+    "eslint": "^7.8.1",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
+    "prettier": "^2.1.1",
+    "stylelint": "^13.7.0"
+  }
+}
