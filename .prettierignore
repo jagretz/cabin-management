@@ -3,3 +3,7 @@ dist
 build
 target
 coverage
+.vscode
+*-lock.json
+.*ignore
+.*cache
