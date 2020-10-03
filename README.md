@@ -8,6 +8,7 @@ A "managment" application to help manage reservations for family/friends cabins.
   - [`npm start`](#npm-start)
   - [`npm test`](#npm-test)
   - [`npm run build`](#npm-run-build)
+- [Contribution](#contribution)
 
 # npm Scripts
 
@@ -31,3 +32,7 @@ Builds the app for production to the `build` folder. It correctly bundles React 
 The build is minified and the filenames include the hashes.
 
 _This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)._ -- Thank you CRA team!
+
+# Contribution
+
+_Try_ to follow the Angular teams [Git Commit Guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines). See more their more detailed explainations and [examples](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
