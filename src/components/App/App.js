@@ -24,13 +24,6 @@ function App() {
         <Route path={ROUTES.HOME} component={HomePage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
-
-        {/* <header className="App-header">
-          <p>
-            Greetings <code>{process.env.REACT_APP_USERNAME}</code>! It is an
-            honor to meet you.
-          </p>
-        </header> */}
       </div>
     </Router>
   );

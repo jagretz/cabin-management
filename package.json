@@ -8,8 +8,8 @@
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test --watch",
     "test:coverage": "react-scripts test --coverage=true --watchAll=false",
-    "eslint": "eslint ./ --fix --cache",
-    "prettier": "prettier --write \"./**/*.{js,jsx,css,scss,html,json,md,mdx}\" --no-config",
+    "lint": "eslint ./ --fix --cache",
+    "format": "prettier --write \"./**/*.{js,jsx,css,scss,html,json,md,mdx}\" --no-config",
     "stylelint": "stylelint \"./**/*.{css,scss}\" --fix"
   },
   "husky": {
