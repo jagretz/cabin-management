@@ -1,4 +1,5 @@
 import app from "firebase/app";
+import "firebase/auth";
 
 /**
  * The `REACT_APP_` env-variable prefix is required for apps bootstropped
@@ -15,8 +16,33 @@ const firebaseConfig = Object.freeze({
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 });
 
+// firebase interface
+// implements firebase Auth API
 export default class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
+
+    this.auth = app.auth();
   }
+
+  // TODO: 2020/10/03 jagretz - needs to be resolved later on - for each method
+  // TODO: 2020/10/03 jagretz - implement error handling - for each method
+
+  // is asynchronous
+  doCreateUserWithEmailAndPassword = (email, password) =>
+    this.auth.createUserWithEmailAndPassword(email, password);
+
+  // is asynchronous
+  doSignInWithEmailAndPassword = (email, password) =>
+    this.auth.signInWithEmailAndPassword(email, password);
+
+  // is asynchronous
+  doSignOut = () => this.auth.signOut();
+
+  // is asynchronous
+  doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email);
+
+  // is asynchronous
+  doPasswordUpdate = (password) =>
+    this.auth.currentUser.updatePassword(password);
 }
