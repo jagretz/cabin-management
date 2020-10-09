@@ -46,9 +46,11 @@ class SignUpFormBase extends Component {
     firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then((/* authUser */) => {
-        // on success -> Reset state and user input
+        /* on success
+        - Reset component state and user input
+        - redirect to HOME
+        */
         this.setState(getInitialState());
-        // on success -> redirect to HOME
         history.push(ROUTES.HOME);
       })
       .catch((error) => {
