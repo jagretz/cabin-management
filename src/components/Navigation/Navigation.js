@@ -1,20 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import * as ROUTES from "constants/routes";
 import SignOutButton from "components/SignOut/SignOut";
+import { SessionContext } from "components/Session";
 
-export default function Navigation({ authUser }) {
+export default function Navigation() {
+  const authUser = useContext(SessionContext);
+
   if (authUser) {
     return <NavigationAuthSubject />;
   }
 
   return <NavigationNonAuthSubject />;
 }
-
-Navigation.propTypes = {
-  authUser: PropTypes.shape({}),
-};
 
 // authn and authz
 const NavigationNonAuthSubject = () => (

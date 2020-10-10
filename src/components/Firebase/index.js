@@ -1,2 +1,2 @@
-export { FirebaseContext, FirebaseProvider } from "./context";
+export { FirebaseContext, FirebaseProvider } from "./firebaseContext";
 export { default } from "./firebase";
