@@ -33,12 +33,6 @@ const getInitialState = () => ({
 class SignUpFormBase extends Component {
   state = getInitialState();
 
-  // static propTypes = {};
-
-  // constructor(props) {
-  //   super(props);
-  // }
-
   onSubmit = (event) => {
     const { email, passwordOne } = this.state;
     const { firebase, history } = this.props;
