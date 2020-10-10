@@ -8,6 +8,9 @@ A "managment" application to help manage reservations for family/friends cabins.
   - [`npm start`](#npm-start)
   - [`npm test`](#npm-test)
   - [`npm run build`](#npm-run-build)
+- [Project Architecture](#project-architecture)
+  - [Libraries, Frameworks, Tools](#libraries-frameworks-tools)
+  - [State Management](#state-management)
 - [Contribution](#contribution)
 
 # npm Scripts
@@ -32,6 +35,38 @@ Builds the app for production to the `build` folder. It correctly bundles React 
 The build is minified and the filenames include the hashes.
 
 _This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)._ -- Thank you CRA team!
+
+# Project Architecture
+
+## Libraries, Frameworks, Tools
+
+Scaffolding
+
+- create-react-app
+
+Libraries
+
+- React
+- Firebase
+
+Testing
+
+- testing-library
+
+Styles / CSS
+
+- CSS standard i.e no pre-processors.
+
+Linting & Formatting
+
+- eslint: recommended settings with minor differences
+- prettier: Use the defaults
+
+## State Management
+
+No state management libraries (i.e. Redux, MobX) are used. Instead, global application state is managed directly by react using local component state with prop drilling, react context, and separation of pages using react-router.
+
+Using a state management library would make things easier as the application grows, but for now, with the application in its inception phase, managing state with react will due.
 
 # Contribution
 

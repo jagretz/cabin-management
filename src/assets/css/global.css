@@ -13,3 +13,24 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
+
+.navigation {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+a:active,
+a:focus {
+    color: turquoise;
+}
+
+a:hover {
+    color: yellow;
+}

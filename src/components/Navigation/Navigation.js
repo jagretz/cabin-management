@@ -6,7 +6,7 @@ import SignOutButton from "components/SignOut/SignOut";
 export default function Navigation() {
   return (
     <div>
-      <ul>
+      <ul className="navigation">
         <li>
           <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
         </li>
