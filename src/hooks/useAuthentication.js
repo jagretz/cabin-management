@@ -1,11 +1,11 @@
 /**
- * @module hooks/useSession
- * @description firebase session... description TBD.
+ * @module hooks/useAuthentication
+ * @description firebase authentication (auth-n)... description TBD.
  */
 import { useState, useContext, useEffect } from "react";
 import { FirebaseContext } from "components/Firebase";
 
-export function useSession() {
+export function useAuthentication() {
   const [authUser, setAuthUser] = useState(null);
   const firebase = useContext(FirebaseContext);
 
@@ -19,11 +19,11 @@ export function useSession() {
     // removes the firebase auth event listener when the component unmounts.
     return () => authEventListener();
     /*
-    Call useEffect with no-args or the #authUser.
+    Call useEffect with args the "to-be authenticated" user.
     This is important. If anything changes with the authenticated user,
     The app should react appropriately.
     */
-  }, [authUser]);
+  }, [authUser, firebase]);
 
   return authUser;
 }

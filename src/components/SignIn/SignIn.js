@@ -5,11 +5,13 @@ import React, { Component, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import { FirebaseContext } from "components/Firebase";
 import { SignUpLink } from "components/SignUp/SignUp";
+// import { useAuthorization } from "hooks/useAuthorization";
 import { PasswordForgetLink } from "components/PasswordForget/PasswordForget";
 import * as ROUTES from "constants/routes";
 
 export default function SignInPage() {
   const firebase = useContext(FirebaseContext);
+  // useAuthorization();
 
   return (
     <div>

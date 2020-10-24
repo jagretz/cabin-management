@@ -9,12 +9,12 @@ import HomePage from "components/Home/Home";
 import AccountPage from "components/Account/Account";
 import AdminPage from "components/Admin/Admin";
 import { SessionProvider } from "components/Session";
-import { useSession } from "hooks/useSession";
+import { useAuthentication } from "hooks/useAuthentication";
 import * as ROUTES from "constants/routes";
 import "./App.css";
 
 export default function App() {
-  const authUser = useSession();
+  const authUser = useAuthentication();
 
   return (
     <Router>

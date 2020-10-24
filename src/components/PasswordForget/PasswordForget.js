@@ -24,7 +24,7 @@ const getInitialState = () => ({
 /**
  * A form component use for submitting information (email address)
  * as required by the Firebase authentication API to reset a users password.
- * @param event
+ * @param {Event} event an event...
  */
 class PasswordForgetFormBase extends Component {
   state = getInitialState();
