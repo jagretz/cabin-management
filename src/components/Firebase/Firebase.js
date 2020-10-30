@@ -1,5 +1,6 @@
 import app from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 
 /**
  * The `REACT_APP_` env-variable prefix is required for apps bootstropped
@@ -23,10 +24,14 @@ export default class Firebase {
     app.initializeApp(firebaseConfig);
 
     this.auth = app.auth();
+    this.db = app.database();
   }
 
-  // TODO: 2020/10/03 jagretz - needs to be resolved later on - for each method
-  // TODO: 2020/10/03 jagretz - implement error handling - for each method
+  /*
+  ---- AuthN API ----
+  */
+
+  // TODO: 2020/10/03 jagretz - for each method, implement error handling
 
   // is asynchronous
   doCreateUserWithEmailAndPassword = (email, password) =>
@@ -45,4 +50,18 @@ export default class Firebase {
   // is asynchronous
   doPasswordUpdate = (password) =>
     this.auth.currentUser.updatePassword(password);
+
+  /*
+  ---- User API ----
+  Notes:
+  - paths in the ref() method match the location where entities (users)
+    are stored in Firebase's realtime database API.
+
+  Refer to [realtime database setup for the Web](https://firebase.google.com/docs/database/web/start)
+  Read [Choose a database solution](https://firebase.google.com/docs/database/rtdb-vs-firestore#key_considerations)
+  */
+
+  user = (uid) => this.db.ref(`users/${uid}`);
+
+  users = () => this.db.ref("users");
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const FirebaseContext = React.createContext(null);
 export { FirebaseContext };
@@ -13,6 +13,6 @@ export function FirebaseProvider({ value, children }) {
 }
 
 FirebaseProvider.propTypes = {
-  value: propTypes.any,
-  children: propTypes.any,
+  value: PropTypes.any,
+  children: PropTypes.any,
 };
