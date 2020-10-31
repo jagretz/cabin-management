@@ -28,8 +28,8 @@ export default class Firebase {
   }
 
   /*
-  ---- AuthN API ----
-  */
+   * AuthN API *
+   */
 
   // TODO: 2020/10/03 jagretz - for each method, implement error handling
 
@@ -52,7 +52,48 @@ export default class Firebase {
     this.auth.currentUser.updatePassword(password);
 
   /*
-  ---- User API ----
+   * Merge Auth and DB User API *
+   */
+
+  /*
+  TODO: 2020/10/31 jagretz - docs
+  @description
+  Provides two callback functions to this new method, which are executed
+  based on whether the user is authenticated or not
+
+  @param {function} next - callback to be invoked for authorized users
+  @param {function} fallback - callback to be invoked for non-authorized users
+  */
+  onAuthUserListener = (next, fallback) =>
+    this.auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        this.user(authUser.uid)
+          .once("value")
+          .then((snapshot) => {
+            const dbUser = snapshot.val();
+
+            // default empty roles
+            if (!dbUser.roles) {
+              dbUser.roles = {};
+            }
+
+            // merge auth and db user
+            const updatedUser = {
+              uid: authUser.uid,
+              email: authUser.email,
+              ...dbUser,
+            };
+
+            next(updatedUser);
+          });
+      } else {
+        fallback();
+      }
+    });
+
+  /*
+  * User API *
+
   Notes:
   - paths in the ref() method match the location where entities (users)
     are stored in Firebase's realtime database API.

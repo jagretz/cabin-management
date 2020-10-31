@@ -14,11 +14,11 @@ import * as ROUTES from "constants/routes";
 import "./App.css";
 
 export default function App() {
-  const authUser = useAuthentication();
+  const user = useAuthentication();
 
   return (
     <Router>
-      <SessionProvider value={authUser}>
+      <SessionProvider value={user}>
         <div className="App">
           <Navigation />
 

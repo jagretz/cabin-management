@@ -1,8 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { FirebaseContext } from "components/Firebase";
+import { useAuthorization, hasRole } from "hooks/useAuthorization";
+import { ADMIN } from "constants/roles";
 
 export default function Admin() {
+  // TODO: 2020/10/24 jagretz - it would be annoying to add this hook for every
+  // route we want to "protect" from unauthorized use.
+  // Let us think of another way to handle this functionality.
+  useAuthorization(hasRole(ADMIN));
+
   const firebase = useContext(FirebaseContext);
   const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState([]);
@@ -22,7 +29,8 @@ export default function Admin() {
 
     // remove the listener
     return () => firebase.users().off();
-  }, [firebase]);
+    // }, [firebase]);
+  }, []);
 
   return (
     <div>

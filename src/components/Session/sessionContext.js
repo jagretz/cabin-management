@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 
-const SessionContext = React.createContext({ authUser: null });
+const SessionContext = React.createContext({ user: null });
 export { SessionContext };
 
 export function SessionProvider({ value, children }) {
