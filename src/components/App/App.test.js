@@ -8,6 +8,7 @@ const mockFirebase = () => ({
   auth: {
     onAuthStateChanged: jest.fn(() => jest.fn()),
   },
+  onAuthUserListener: jest.fn(() => jest.fn()),
 });
 
 describe("Application", () => {

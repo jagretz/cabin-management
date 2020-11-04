@@ -25,6 +25,8 @@ export default class Firebase {
 
     this.auth = app.auth();
     this.db = app.database();
+    // [firebase.auth.GoogleAuthProvider](https://firebase.google.com/docs/reference/js/firebase.auth.GoogleAuthProvider)
+    this.googleProvider = new app.auth.GoogleAuthProvider();
   }
 
   /*
@@ -40,6 +42,9 @@ export default class Firebase {
   // is asynchronous
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
+
+  // is asynchronous
+  doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
 
   // is asynchronous
   doSignOut = () => this.auth.signOut();

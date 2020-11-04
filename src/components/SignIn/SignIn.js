@@ -5,13 +5,12 @@ import React, { Component, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import { FirebaseContext } from "components/Firebase";
 import { SignUpLink } from "components/SignUp/SignUp";
-// import { useAuthorization } from "hooks/useAuthorization";
 import { PasswordForgetLink } from "components/PasswordForget/PasswordForget";
 import * as ROUTES from "constants/routes";
+import GoogleSignIn from "./GoogleSignIn";
 
 export default function SignInPage() {
   const firebase = useContext(FirebaseContext);
-  // useAuthorization();
 
   return (
     <div>
@@ -20,6 +19,7 @@ export default function SignInPage() {
       {/* `firebase` can be moved directly to the `SignUpForm` component with
       the `useContext` hook once it's converted to a function component. */}
       <SignInForm firebase={firebase} />
+      <GoogleSignIn firebase={firebase} />
       <PasswordForgetLink />
       <SignUpLink />
     </div>
