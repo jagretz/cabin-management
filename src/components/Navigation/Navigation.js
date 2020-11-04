@@ -53,6 +53,6 @@ const NavigationAuthSubject = ({ user }) => (
 
 NavigationAuthSubject.propTypes = {
   user: PropTypes.shape({
-    roles: PropTypes.arrayOf({}),
+    roles: PropTypes.shape({}),
   }).isRequired,
 };
