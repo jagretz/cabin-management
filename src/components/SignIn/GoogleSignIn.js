@@ -6,6 +6,14 @@ import { withRouter } from "react-router-dom";
 import * as ROUTES from "constants/routes";
 import * as ROLES from "constants/roles";
 
+export const ERROR_CODE_ACCOUNT_EXISTS =
+  "auth/account-exists-with-different-credential";
+
+export const ERROR_MSG_ACCOUNT_EXISTS =
+  "An account with an E-Mail address to this social account already exists." +
+  " Try to login from this account instead and associate your social accounts" +
+  " from your account settings.";
+
 class SignInGoogleBase extends Component {
   state = { error: null };
 
@@ -36,7 +44,13 @@ class SignInGoogleBase extends Component {
         this.props.history.push(ROUTES.HOME);
       })
       .catch((error) => {
-        this.setState({ error });
+        const err = { ...error };
+
+        if (err.code === ERROR_CODE_ACCOUNT_EXISTS) {
+          err.message = ERROR_MSG_ACCOUNT_EXISTS;
+        }
+
+        this.setState({ error: err });
       });
 
     event.preventDefault();

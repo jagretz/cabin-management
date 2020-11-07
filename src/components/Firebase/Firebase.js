@@ -23,6 +23,12 @@ export default class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
 
+    /*
+    In order to create user credentials from the email and password we need
+    to access the Firebase internal `auth.EmailAuthProvider` API.
+    This MUST be done before we override `auth` with `app.auth()`.
+    */
+    this.emailAuthProvider = app.auth.EmailAuthProvider;
     this.auth = app.auth();
     this.db = app.database();
     // [firebase.auth.GoogleAuthProvider](https://firebase.google.com/docs/reference/js/firebase.auth.GoogleAuthProvider)

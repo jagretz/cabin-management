@@ -7,6 +7,14 @@ import { FirebaseContext } from "components/Firebase";
 import * as ROUTES from "constants/routes";
 import * as ROLES from "constants/roles";
 
+const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
+
+const ERROR_MSG_ACCOUNT_EXISTS =
+  "An account with this E-Mail address already exists. Try to login with this " +
+  "account instead. If you think the account is already used from a social " +
+  "logins, try to sign-in with one of them. You can associate social login" +
+  "accounts from your account settings.";
+
 export default function SignUpPage() {
   const firebase = useContext(FirebaseContext);
 
@@ -63,8 +71,14 @@ class SignUpFormBase extends Component {
         history.push(ROUTES.HOME);
       })
       .catch((error) => {
+        const err = { ...error };
+
+        if (err.code === ERROR_CODE_ACCOUNT_EXISTS) {
+          err.message = ERROR_MSG_ACCOUNT_EXISTS;
+        }
+
         // reset pw fields
-        this.setState({ error, passwordOne: "", passwordTwo: "" });
+        this.setState({ error: err, passwordOne: "", passwordTwo: "" });
       });
 
     // prevents a reloading the browser (native functionality) -- This might be removed with react v17.
