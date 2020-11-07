@@ -62,6 +62,16 @@ export default class Firebase {
   doPasswordUpdate = (password) =>
     this.auth.currentUser.updatePassword(password);
 
+  // is asynchronous
+  doSendEmailVerification = (/* email provider */) => {
+    this.auth.currentUser.sendEmailVerification({
+      /* TODO: 2020/11/07 jagretz - use param email provider instead...
+      We don't know the users email provider until they tell us by creating an
+      account. */
+      url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
+    });
+  };
+
   /*
    * Merge Auth and DB User API *
    */
@@ -92,6 +102,8 @@ export default class Firebase {
             const updatedUser = {
               uid: authUser.uid,
               email: authUser.email,
+              emailVerified: authUser.emailVerified,
+              providerData: authUser.providerData,
               ...dbUser,
             };
 

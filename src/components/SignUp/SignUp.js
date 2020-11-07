@@ -62,6 +62,9 @@ class SignUpFormBase extends Component {
         */
         return firebase.user(authUser.user.uid).set({ username, email, roles });
       })
+      .then(() => {
+        return firebase.auth.doSendEmailVerification(/* email provider */);
+      })
       .then((/* authUser */) => {
         /* on success
         - Reset component state and user input

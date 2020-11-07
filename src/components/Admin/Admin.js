@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { FirebaseContext } from "components/Firebase";
 import { useAuthorization, hasRole } from "hooks/useAuthorization";
 import { ADMIN } from "constants/roles";
+import { useEmailVerification, VerifyEmail } from "hooks/useEmailVerification";
 
 export default function Admin() {
   // TODO: 2020/10/24 jagretz - it would be annoying to add this hook for every
@@ -13,6 +14,7 @@ export default function Admin() {
   const firebase = useContext(FirebaseContext);
   const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState([]);
+  const requiresEmailVerfication = useEmailVerification();
 
   useEffect(() => {
     // add a listener for any changes to the users in our database
@@ -31,6 +33,10 @@ export default function Admin() {
     return () => firebase.users().off();
     // }, [firebase]);
   }, []);
+
+  if (requiresEmailVerfication) {
+    return <VerifyEmail />;
+  }
 
   return (
     <div>
