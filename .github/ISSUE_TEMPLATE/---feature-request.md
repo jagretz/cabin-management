@@ -3,6 +3,8 @@ name: "\U0001F680 Feature Request"
 about: Suggest an idea for this project
 title: ''
 labels: feature, needs refinement
+projects: cabin-management
+milestone: v0.1.0
 assignees: ''
 
 ---
@@ -17,7 +19,7 @@ So that... explain why this feature is desired
 
 ## Additional Details
 
-< provide any additional details, notes, technical details, helpful information, etc. >
+Provide any additional details, notes, technical details, helpful information, etc.
 
 ## Open Questions
 
