@@ -33,6 +33,11 @@ export default class Firebase {
     this.db = app.database();
     // [firebase.auth.GoogleAuthProvider](https://firebase.google.com/docs/reference/js/firebase.auth.GoogleAuthProvider)
     this.googleProvider = new app.auth.GoogleAuthProvider();
+    /*
+    Following guide to
+    [Facebook Login for the Web](https://developers.facebook.com/docs/facebook-login/web)
+    */
+    this.facebookProvider = new app.auth.FacebookAuthProvider();
   }
 
   /*
@@ -51,6 +56,9 @@ export default class Firebase {
 
   // is asynchronous
   doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
+
+  // is asynchronous
+  doSignInWithFacebook = () => this.auth.signInWithPopup(this.facebookProvider);
 
   // is asynchronous
   doSignOut = () => this.auth.signOut();
@@ -91,6 +99,8 @@ export default class Firebase {
         this.user(authUser.uid)
           .once("value")
           .then((snapshot) => {
+            // this should always return a value. If it doesn't, there is
+            // a problem persisting the user in the db.
             const dbUser = snapshot.val();
 
             // default empty roles

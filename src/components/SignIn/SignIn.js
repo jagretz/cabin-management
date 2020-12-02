@@ -8,6 +8,7 @@ import { SignUpLink } from "components/SignUp/SignUp";
 import { PasswordForgetLink } from "components/PasswordForget/PasswordForget";
 import * as ROUTES from "constants/routes";
 import GoogleSignIn from "./GoogleSignIn";
+import FacebookSignIn from "./FacebookSignIn";
 
 export default function SignInPage() {
   const firebase = useContext(FirebaseContext);
@@ -20,6 +21,7 @@ export default function SignInPage() {
       the `useContext` hook once it's converted to a function component. */}
       <SignInForm firebase={firebase} />
       <GoogleSignIn firebase={firebase} />
+      <FacebookSignIn firebase={firebase} />
       <PasswordForgetLink />
       <SignUpLink />
     </div>
